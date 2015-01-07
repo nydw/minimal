@@ -1,12 +1,14 @@
 #!/bin/sh
 
+echo "start build busybox...."
+
 cd work/busybox
 
 # Change to the first directory ls finds, e.g. 'busybox-1.22.1'
 cd $(ls -d *)
 
 # Remove previously generated artefacts
-make clean
+#make clean
 
 # Create a default configuration file
 make defconfig

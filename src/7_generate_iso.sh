@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "generate iso...."
+
 rm -f minimal_linux_live.iso
 
 cd work/kernel

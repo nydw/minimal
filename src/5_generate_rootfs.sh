@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "generate rootfs...."
+
 cd work
 
 rm -rf rootfs

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "pack rootfs...."
+
 cd work
 
 rm -f rootfs.cpio.gz

@@ -1,5 +1,12 @@
 #!/bin/sh
 
+echo "start get kernel...."
+
+if [ -f ./source/linux-3.*.tar.xz ]
+then
+    exit 0
+fi
+
 # Grab everything after the '=' character
 DOWNLOAD_URL=$(grep -i KERNEL_SOURCE_URL .config | cut -f2 -d'=')
 
@@ -13,11 +20,14 @@ cd source
 wget -c $DOWNLOAD_URL
 
 # Delete folder with previously extracted kernel
-rm -rf ../work/kernel
-mkdir ../work/kernel
-
 # Extract kernel to folder 'kernel'
 # Full path will be something like 'kernel\linux-3.16.1'
-tar -xvf $ARCHIVE_FILE -C ../work/kernel
+#rm -rf ../work/kernel
+
+if [ ! -d ../work/kernel ]
+then
+    mkdir -p ../work/kernel
+    tar -xvf $ARCHIVE_FILE -C ../work/kernel
+fi
 
 cd ..

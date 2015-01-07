@@ -1,4 +1,5 @@
 #!/bin/sh
+echo "start building kernel...."
 
 cd work/kernel
 
@@ -6,10 +7,11 @@ cd work/kernel
 cd $(ls -d *)
 
 # Cleans up the kernel sources, including configuration files
-make mrproper
+#make mrproper
 
 # Create a default configuration file for the kernel
-make defconfig
+#make defconfig
+cp $MINIROOTPATH/config/kernel.cfg .config
 
 # Changes the name of the system
 sed -i "s/.*CONFIG_DEFAULT_HOSTNAME.*/CONFIG_DEFAULT_HOSTNAME=\"minimal\"/" .config

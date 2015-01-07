@@ -1,4 +1,5 @@
 #!/bin/sh
+export MINIROOTPATH=$(pwd)
 
 sh 0_prepare.sh
 sh 1_get_kernel.sh

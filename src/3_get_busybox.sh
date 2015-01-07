@@ -1,5 +1,12 @@
 #!/bin/sh
 
+echo "start get busybox...."
+
+if [ -f ./source/busybox*.tar.bz2 ]
+then
+    exit 0
+fi
+
 # Grab everything after the '=' character
 DOWNLOAD_URL=$(grep -i BUSYBOX_SOURCE_URL .config | cut -f2 -d'=')
 
@@ -13,11 +20,14 @@ cd source
 wget -c $DOWNLOAD_URL
 
 # Delete folder with previously extracted busybox
-rm -rf ../work/busybox
-mkdir ../work/busybox
-
 # Extract busybox to folder 'busybox'
 # Full path will be something like 'busybox\busybox-1.22.1'
-tar -xvf $ARCHIVE_FILE -C ../work/busybox
+# rm -rf ../work/busybox
+
+if [ ! -d ../work/busybox ]
+then
+    mkdir ../work/busybox
+    tar -xvf $ARCHIVE_FILE -C ../work/busybox
+fi
 
 cd ..
