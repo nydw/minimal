@@ -24,7 +24,7 @@ wget -c $DOWNLOAD_URL
 # Full path will be something like 'busybox\busybox-1.22.1'
 # rm -rf ../work/busybox
 
-if [ ! -d ../work/busybox ]
+if [ ! -x ../work/busybox ]
 then
     mkdir ../work/busybox
     tar -xvf $ARCHIVE_FILE -C ../work/busybox

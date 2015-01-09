@@ -14,13 +14,13 @@ cd ../../rootfs
 
 rm -f linuxrc
 
-mkdir dev
-mkdir etc
-mkdir proc
-mkdir root
-mkdir src
-mkdir sys
-mkdir tmp
+mkdir -p dev
+mkdir -p etc
+mkdir -p proc
+mkdir -p root
+mkdir -p src
+mkdir -p sys
+mkdir -p tmp
 chmod 1777 tmp
 
 cd etc
@@ -32,7 +32,8 @@ dmesg -n 1
 mount -t devtmpfs none /dev
 mount -t proc none /proc
 mount -t sysfs none /sys
-
+ifconfig eth0 192.168.9.222 netmask 255.255.255.0
+route add 0.0.0.0/0 gw 192.168.9.1
 EOF
 
 chmod +x bootscript.sh
